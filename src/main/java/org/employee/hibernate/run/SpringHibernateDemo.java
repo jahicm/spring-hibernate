@@ -26,7 +26,7 @@ public class SpringHibernateDemo {
 		IGenericDao<Department> dep = (IGenericDao<Department>) ctx.getBean("createDepartment");
 		IGenericDao<Project> pro = (IGenericDao<Project>) ctx.getBean("createProject");
 		IGenericDao<Employee> employee = (IGenericDao<Employee>) ctx.getBean("createEmployee");
-		MBeanExporter mBeanExporter = (MBeanExporter) ctx.getBean("jmxExporter");
+		
 
 		System.out.println("***********CREATE DATA START*****************");
 		SimpleDateFormat ft = new SimpleDateFormat("dd.mm.yyyy");
