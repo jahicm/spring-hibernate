@@ -8,13 +8,14 @@ import java.util.List;
 import java.util.Set;
 
 import org.employee.hibernate.config.ApplicationConfig;
-import org.employee.hibernate.models.Department;
-import org.employee.hibernate.models.Dependent;
-import org.employee.hibernate.models.Employee;
-import org.employee.hibernate.models.Project;
+import org.employee.jpa.models.Department;
+import org.employee.jpa.models.Dependent;
+import org.employee.jpa.models.Employee;
+import org.employee.jpa.models.Project;
 import org.employee.spring.hibernate.dao.IGenericDao;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
+import org.springframework.jmx.export.MBeanExporter;
 
 public class SpringHibernateDemo {
 
@@ -25,7 +26,7 @@ public class SpringHibernateDemo {
 		IGenericDao<Department> dep = (IGenericDao<Department>) ctx.getBean("createDepartment");
 		IGenericDao<Project> pro = (IGenericDao<Project>) ctx.getBean("createProject");
 		IGenericDao<Employee> employee = (IGenericDao<Employee>) ctx.getBean("createEmployee");
-		
+		MBeanExporter mBeanExporter = (MBeanExporter) ctx.getBean("jmxExporter");
 
 		System.out.println("***********CREATE DATA START*****************");
 		SimpleDateFormat ft = new SimpleDateFormat("dd.mm.yyyy");
@@ -175,6 +176,7 @@ public class SpringHibernateDemo {
 		dep.delete(departmentOne);
 		System.out.println("*************DELETED****************");
 		
+
 		ctx.close();
 	}
 }

@@ -1,6 +1,6 @@
 package org.employee.spring.hibernate.dao;
 
-import org.employee.hibernate.models.Employee;
+import org.employee.jpa.models.Employee;
 import org.springframework.stereotype.Repository;
 
 
