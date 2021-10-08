@@ -1,6 +1,6 @@
 package org.employee.spring.hibernate.dao;
 
-import org.employee.jpa.models.Project;
+import org.employee.hibernate.models.Project;
 import org.springframework.stereotype.Repository;
 
 @Repository("projectDao")

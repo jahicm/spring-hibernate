@@ -2,13 +2,10 @@ package org.employee.hibernate.config;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import org.employee.spring.hibernate.dao.CustomStatistics;
 import org.employee.spring.hibernate.dao.DepartmentDaoImpl;
 import org.employee.spring.hibernate.dao.DependentDaoImpl;
 import org.employee.spring.hibernate.dao.EmployeeDaoImpl;
@@ -23,7 +20,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.jmx.export.MBeanExporter;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -72,14 +68,12 @@ public class ApplicationConfig {
 
 	final Properties additionalProperties() {
 		final Properties hibernateProperties = new Properties();
+		
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
 		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 		hibernateProperties.setProperty("hibernate.show_sql", "true");
 		hibernateProperties.setProperty("hibernate.cache.use_second_level_cache", "false");
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-		hibernateProperties.put("hibernate.jmx.enabled", true);
-		hibernateProperties.put("hibernate.generate_statistics", true);
-		hibernateProperties.put("hibernate.session_factory_name", "sessionFactory");
 
 		return hibernateProperties;
 	}
@@ -114,19 +108,5 @@ public class ApplicationConfig {
 
 		return new DependentDaoImpl();
 	}
-	@Bean
-	public CustomStatistics createCustomStatistics() throws IOException {
 
-		return new CustomStatistics();
-	}
-
-	@Bean
-	MBeanExporter jmxExporter() throws IOException {
-		MBeanExporter exporter = new MBeanExporter();
-		Map<String, Object> beans = new HashMap<>();
-		beans.put("bean:name=ProSpring5SingerApp", createEmployee());
-		beans.put("bean:name=Prospring5SingerApp-hibernate", createCustomStatistics());
-		exporter.setBeans(beans);
-		return exporter;
-	}
 }

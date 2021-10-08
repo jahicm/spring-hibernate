@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.employee.hibernate.config.ApplicationConfig;
-import org.employee.jpa.models.Employee;
+import org.employee.hibernate.models.Employee;
 import org.employee.spring.hibernate.dao.IGenericDao;
 import org.junit.BeforeClass;
 import org.junit.Test;

@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Set;
 
 import org.employee.hibernate.config.ApplicationConfig;
-import org.employee.jpa.models.Department;
-import org.employee.jpa.models.Dependent;
-import org.employee.jpa.models.Employee;
-import org.employee.jpa.models.Project;
+import org.employee.hibernate.models.Department;
+import org.employee.hibernate.models.Dependent;
+import org.employee.hibernate.models.Employee;
+import org.employee.hibernate.models.Project;
 import org.employee.spring.hibernate.dao.IGenericDao;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
